@@ -7,6 +7,10 @@ export default defineNuxtConfig({
                     'rel': 'stylesheet',
                     'href': 'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css'
                 },
+                {
+                    'rel': 'stylesheet',
+                    'href': 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+                }
             ],
             script: [
                 {'src': 'https://unpkg.com/@codersrank/activity@0.9.14/codersrank-activity.min.js'},
