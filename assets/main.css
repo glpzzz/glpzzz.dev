@@ -35,6 +35,9 @@ html, body {
     text-decoration: none;
 }
 
+.markdown-body h1, .markdown-body h2 {
+    border-bottom-color: #1D2021;
+}
 
 .markdown-body a {
     color: #D79921;
