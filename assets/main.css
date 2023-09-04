@@ -104,12 +104,17 @@ ul.nav-horizontal > li + li {
     margin-top: 0;
 }
 
+#summary{
+    margin-bottom: 1rem;
+}
+
+
 @media (min-width: 768px) {
-    img.glpzzz {
-        height: auto;
-        aspect-ratio: 1/1;
-        width: 40%;
-        float: right;
+    #summary{
+        float:right;
+        width: 33%;
+        padding-left: 1rem;
+        background: #282828;
     }
 }
 

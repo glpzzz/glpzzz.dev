@@ -15,6 +15,7 @@ export default defineNuxtConfig({
             script: [
                 {'src': 'https://unpkg.com/@codersrank/activity@0.9.14/codersrank-activity.min.js'},
                 {'src': 'https://unpkg.com/@codersrank/skills-chart@0.9.21/codersrank-skills-chart.min.js'},
+                {'src': 'https://unpkg.com/@codersrank/summary@0.9.13/codersrank-summary.js'},
             ]
         },
     },
