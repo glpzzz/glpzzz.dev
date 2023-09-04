@@ -6,6 +6,7 @@
   <div class="p-4 border-radius-4">
     <codersrank-skills-chart
         username="glpzzz"
+        show-other-skills="true"
         branding="false"
         tooltip="true"
         labels="true"
