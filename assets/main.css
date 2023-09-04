@@ -1,4 +1,4 @@
-html,body{
+html, body {
     margin: 0;
     padding: 0;
     background: #282828;
@@ -17,6 +17,27 @@ html,body{
     font-family: 'Fira Sans', sans-serif;
     font-size: 20px;
     color: #00dc82;
+}
+
+.markdown-body h2 > a,
+.markdown-body h3 > a,
+.markdown-body h4 > a,
+.markdown-body h5 > a,
+.markdown-body h6 > a {
+    color: inherit;
+}
+
+.markdown-body h2 > a:hover,
+.markdown-body h3 > a:hover,
+.markdown-body h4 > a:hover,
+.markdown-body h5 > a:hover,
+.markdown-body h6 > a:hover {
+    text-decoration: none;
+}
+
+
+.markdown-body a {
+    color: #D79921;
 }
 
 .markdown-body .highlight pre, .markdown-body pre {
@@ -63,14 +84,20 @@ header > p.description-page {
     display: none;
 }
 
-#main-navigation {
+.markdown-body > footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #1D2021;
+}
+
+ul.nav-horizontal {
     display: flex;
     list-style: none;
     padding: 0;
     justify-content: space-around;
 }
 
-#main-navigation > li + li {
+ul.nav-horizontal > li + li {
     margin-top: 0;
 }
 
