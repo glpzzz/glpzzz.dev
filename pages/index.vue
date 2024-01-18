@@ -50,12 +50,65 @@ cv.value = data.value
       </div>
     </section>
 
-    <section id="projects">
-      <header>
+    <section id="projects" class="py-4">
+      <header class="py-4 text-center">
         <h2>projects</h2>
       </header>
+      <div class="container-fluid">
+        <ul class="nav nav-tabs nav-justified mb-4" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Client Projects</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Open Source</button>
+          </li>
+        </ul>
+        <div class="tab-content bg-white" id="myTabContent">
+          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <div class="container-fluid">
+              <ul class="row row-cols-md-3 g-4">
+                <li class="col" v-for="(project, index) in cv.projects" :key="`project-${index}`">
+                  <div class="card h-100 border-0 shadow-sm">
+                    <img :src="project.poster ? `/images/${project.poster}.png` : '/images/noimage.webp'" :alt="`Image on ${project.name}`" class="card-img-top" />
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        {{ project.name}}
+                        <small v-if="project.url">| <a :href="project.url" target="_blank" class="text-muted">Demo</a></small>
+                      </h4>
+                      <p class="card-text">
+                        {{project.description}}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <div class="container-fluid">
+              <ul class="row row-cols-md-3 g-4">
+                <li class="col" v-for="(volunteer, index) in cv.volunteer" :key="`volunteer-${index}`">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h4 class="card-title">{{ volunteer.summary}}</h4>
+                      <pre>{{volunteer}}</pre>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <CodersRankActivity class="bg-dark p-4"/>
+
+    <section class="bg-dark text-white text-center p-4">
+      <header class="d-none">
+        <h2>Latest Activity</h2>
+      </header>
+      <CodersRankActivity class="my-4"/>
+    </section>
+
     <section id="experience">
       <header class="py-4 text-center">
         <h2>Latest Experience</h2>
@@ -65,7 +118,8 @@ cv.value = data.value
           <li v-for="(work,index) in cv.work.slice(0,4)" :key="`work-${index}`" class="col">
             <div class="card h-100 border-0 shadow-sm">
               <div class="card-body py-4 text-center d-flex flex-column justify-content-center">
-                <h3 class="card-title">{{ work.position }} <br> @ {{ work.name }}</h3>
+                <h3 class="card-title">{{ work.position }} <br>
+                  @ <a :href="work.url" target="_blank">{{ work.name }}</a></h3>
                 <p class="card-subtitle">
                   {{ work.location }} <br>
                   ({{ work.startDate }} - {{ work.endDate }})
@@ -76,40 +130,13 @@ cv.value = data.value
         </ul>
       </div>
     </section>
+
     <section id="blog">
       <header>
         <h2>blog</h2>
       </header>
     </section>
 
-    <div class="container">
-
-      <h2>About me</h2>
-      <h3 id="im-currently-using"><a href="#im-currently-using">I'm currently using</a></h3>
-      <ul>
-        <li>
-          <a href="https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadp/thinkpad-p50/22tp2wpwp50" rel="nofollow">Lenovo
-            Thinkpad P50</a> + SMI 27” monitor
-        </li>
-        <li>
-          <a href="http://www.a-jazz.com/en/h-pd-63.html" rel="nofollow">Ajazz AK33 mechanical keyboard</a>
-        </li>
-        <li>
-          <a href="https://www.logitech.com/en-us/products/mice/m585-wireless-mouse.910-005108.html" rel="nofollow">Logitech
-            M585 mouse</a>
-        </li>
-        <li>
-          <a href="https://www.ubuntu.com" rel="nofollow">Ubuntu 23.04</a>
-        </li>
-        <li>
-          <a href="https://dwm.suckless.org" rel="nofollow">dwm</a>, (<a href="https://github.com/glpzzz/dwm"
-                                                                         rel="nofollow">my custom build</a>)
-        </li>
-        <li>
-          <a href="https://github.com/glpzzz/dotfiles" rel="nofollow">my dotfiles</a>
-        </li>
-      </ul>
-    </div>
   </article>
 </template>
 
