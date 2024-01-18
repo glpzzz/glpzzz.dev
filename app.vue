@@ -1,26 +1,42 @@
 <template>
-  <div class="markdown-body">
-    <ContentNavigation v-slot="{navigation}">
-      <ul class="nav-horizontal">
-        <li v-for="link of navigation" :key="link._path">
-          <NuxtLink :to="link._path">
-            {{ link.navTitle || link.title }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </ContentNavigation>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Offcanvas navbar large">
+    <div class="container">
+      <NuxtLink to="/" class="navbar-brand">glpzzz.dev</NuxtLink>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
+              aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2"
+           aria-labelledby="offcanvasNavbar2Label">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li v-for="link of mainNav" :key="link._path" class="nav-item">
+                <NuxtLink :to="link.href" class="nav-link">
+                  {{ link.navTitle || link.title }}
+                </NuxtLink>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="bg-light">
     <NuxtPage/>
-    <footer>
-      <ul class="nav nav-horizontal">
-        <li v-for="link of links" :key="link.url">
-          <a :href="link.url" target="_blank">{{ link.name }}</a>
+  </main>
+  <footer class="border-top py-2">
+    <nav>
+      <ul class="nav">
+        <li v-for="link of links" :key="link.url" class="nav-item">
+          <a :href="link.url" target="_blank" class="nav-link">{{ link.name }}</a>
         </li>
       </ul>
-      <p>
-        &copy; https://glpzzz.dev - {{ new Date().getFullYear() }}
-      </p>
-    </footer>
-  </div>
+    </nav>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -30,6 +46,12 @@ useHead({
     return titleChunk ? `${titleChunk} - ${fixed}` : fixed
   }
 })
+
+const mainNav = [
+  {title: 'About', href: '/about'},
+  {title: 'Work', href: '/work'},
+  {title: 'CV', href: '/cv'},
+]
 
 const links = [
   {name: 'CodersRank', url: 'https://profile.codersrank.io/user/glpzzz'},
