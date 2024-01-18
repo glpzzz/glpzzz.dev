@@ -3,14 +3,12 @@
 </script>
 
 <template>
-  <div class=" p-4 border-radius-4">
-    <codersrank-activity
-        username="glpzzz"
-        branding="false"
-        tooltip="true"
-        labels="true"
-        legend="true"></codersrank-activity>
-  </div>
+  <codersrank-activity
+      username="glpzzz"
+      branding="false"
+      tooltip="true"
+      labels="true"
+      legend="true"></codersrank-activity>
 </template>
 
 <style scoped>
