@@ -3,13 +3,11 @@
 </script>
 
 <template>
-  <div class="border-radius-4">
     <codersrank-summary
         username="glpzzz"
         branding="false"
-        layout="vertical"
+        layout="horizontal"
     >
 
     </codersrank-summary>
-  </div>
 </template>
