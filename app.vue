@@ -1,45 +1,3 @@
-<template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Offcanvas navbar large">
-    <div class="container">
-      <NuxtLink to="/" class="navbar-brand">glpzzz.dev</NuxtLink>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
-              aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2"
-           aria-labelledby="offcanvasNavbar2Label">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                  aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li v-for="link of mainNav" :key="link._path" class="nav-item">
-                <NuxtLink :to="link.href" class="nav-link">
-                  {{ link.navTitle || link.title }}
-                </NuxtLink>
-              </li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <main class="bg-light">
-    <NuxtPage/>
-  </main>
-  <footer class="border-top py-2">
-    <nav>
-      <ul class="nav">
-        <li v-for="link of links" :key="link.url" class="nav-item">
-          <a :href="link.url" target="_blank" class="nav-link">{{ link.name }}</a>
-        </li>
-      </ul>
-    </nav>
-
-  </footer>
-</template>
-
 <script setup lang="ts">
 useHead({
   titleTemplate: (titleChunk) => {
@@ -49,9 +7,14 @@ useHead({
 })
 
 const mainNav = [
-  {title: 'About', href: '/about'},
-  {title: 'Work', href: '/work'},
+  {title: 'Home', href: '/'},
+  {title: 'About', href: '#about'},
+  {title: 'Skills', href: '#skills'},
+  {title: 'Projects', href: '#projects'},
+  {title: 'Experience', href: '#experience'},
+  {title: 'Blog', href: '/blog'},
   {title: 'CV', href: '/cv'},
+  {title: 'Contact', href: '/#contact'},
 ]
 
 const links = [
@@ -65,4 +28,46 @@ const links = [
   {name: 'Twitter', url: 'https://twitter.com/glpzzz'},
 ]
 
+const theme = ref("light")
+
 </script>
+
+<template>
+
+  <nav id="main-nav" class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <NuxtLink to="/" class="navbar-brand">glpzzz</NuxtLink>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" v-for="link of mainNav" :key="link.href">
+            <NuxtLink :to="link.href" class="nav-link">{{ link.title }}</NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main :data-bs-theme="theme">
+    <NuxtPage/>
+  </main>
+
+  <footer class="bg-dark text-light px-2 py-4" :data-bs-theme="theme">
+    <nav>
+      <ul class="nav flex-column flex-lg-row justify-content-lg-center">
+        <li v-for="link of links" :key="link.url" class="nav-item">
+          <a :href="link.url" target="_blank" class="nav-link">{{ link.name }}</a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</template>
+
+<style scoped>
+.container-fluid {
+
+}
+</style>

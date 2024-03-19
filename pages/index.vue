@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import ProjectCard from "~/components/ProjectCard.vue";
+
 const cv = ref(null)
 
 const {data, error} = await useFetch('/api/all')
@@ -11,21 +13,52 @@ cv.value = data.value
 
   <article>
 
-    <header class="bg-white shadow-sm">
-      <div class="container py-4">
+    <header class="d-flex flex-column align-items-center justify-content-center">
+      <div class="container-fluid">
         <h1 class="display-1">Hello! I'm Gabriel López</h1>
-        <p>
+        <p class="lead">
           I’m a software engineer living in Cienfuegos, Cuba. I am a fan of programming, web development, and
           entrepreneurship. I’m also interested in technology and music. <br/>
           Contact me if you think I can help you with something. <br/>
-          My full
-          <NuxtLink to="/cv">CV</NuxtLink>
-          is available here.
+        </p>
+        <p>
+          <NuxtLink to="/cv" class="btn btn-lg btn-success me-2">Resume</NuxtLink>
+          <button class="btn btn-lg btn-primary">Contact Me!</button>
         </p>
       </div>
     </header>
 
-    <section id="skills" class="d-flex flex-row justify-content-around">
+    <section id="about">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-5">
+            <img src="/glpzzz.jpg"
+                 alt="Photo of Gabriel Alejandro López López"
+                 class="w-100 object-fit-cover"
+                 style="aspect-ratio: 3/4; filter: grayscale(100%)"/>
+
+          </div>
+          <div class="col-lg-7 ps-lg-5">
+            <header>
+              <h2>About Me</h2>
+              <h3>I'm a software engineer</h3>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam at blanditiis ducimus ea, fugit
+              in incidunt laudantium maxime mollitia obcaecati pariatur quia rerum sed unde velit vero voluptas
+              voluptates.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem beatae debitis dolorum fugit in
+              inventore ipsa maxime minus modi necessitatibus nemo optio quaerat quia quibusdam reprehenderit sint,
+              tenetur unde?</p>
+
+            <h3>Latest Activity</h3>
+            <CodersRankActivity class="my-4"/>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6 d-flex align-items-center">
@@ -33,7 +66,7 @@ cv.value = data.value
           </div>
           <div class="col-md-6">
             <header>
-              <h2>skills</h2>
+              <h2>Skills</h2>
             </header>
             <section v-for="skill in cv.skills" :key="skill.name">
               <header>
@@ -50,50 +83,45 @@ cv.value = data.value
       </div>
     </section>
 
-    <section id="projects" class="py-4">
-      <header class="py-4 text-center">
-        <h2>projects</h2>
-      </header>
+    <section id="projects">
       <div class="container-fluid">
+        <header class="py-4 text-center">
+          <h2>Projects</h2>
+        </header>
         <ul class="nav nav-tabs nav-justified mb-4" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Client Projects</button>
+            <button class="nav-link active" id="projects-client-tab" data-bs-toggle="tab"
+                    data-bs-target="#projects-client-tab-pane"
+                    type="button" role="tab" aria-controls="projects-client-tab-pane" aria-selected="true">Client
+              Projects
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Open Source</button>
+            <button class="nav-link" id="projetcs-opensource-tab" data-bs-toggle="tab"
+                    data-bs-target="#projetcs-opensource-tab-pane"
+                    type="button" role="tab" aria-controls="projetcs-opensource-tab-pane" aria-selected="false">Open
+              Source
+            </button>
           </li>
         </ul>
-        <div class="tab-content bg-white" id="myTabContent">
-          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="projects-client-tab-pane" role="tabpanel"
+               aria-labelledby="projects-client-tab"
+               tabindex="0">
             <div class="container-fluid">
               <ul class="row row-cols-md-3 g-4">
                 <li class="col" v-for="(project, index) in cv.projects" :key="`project-${index}`">
-                  <div class="card h-100 border-0 shadow-sm">
-                    <img :src="project.poster ? `/images/${project.poster}.png` : '/images/noimage.webp'" :alt="`Image on ${project.name}`" class="card-img-top" />
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        {{ project.name}}
-                        <small v-if="project.url">| <a :href="project.url" target="_blank" class="text-muted">Demo</a></small>
-                      </h4>
-                      <p class="card-text">
-                        {{project.description}}
-                      </p>
-                    </div>
-                  </div>
+                  <ProjectCard :project="project"/>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+          <div class="tab-pane fade" id="projetcs-opensource-tab-pane" role="tabpanel"
+               aria-labelledby="projetcs-opensource-tab" tabindex="0">
             <div class="container-fluid">
               <ul class="row row-cols-md-3 g-4">
-                <li class="col" v-for="(volunteer, index) in cv.volunteer" :key="`volunteer-${index}`">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h4 class="card-title">{{ volunteer.summary}}</h4>
-                      <pre>{{volunteer}}</pre>
-                    </div>
-                  </div>
+                <li class="col" v-for="volunteer in cv.volunteer" :key="`volunteer-${volunteer.url}`">
+                  <VolunteerCard :volunteer="volunteer"/>
                 </li>
               </ul>
             </div>
@@ -102,45 +130,23 @@ cv.value = data.value
       </div>
     </section>
 
-    <section class="bg-dark text-white text-center p-4">
-      <header class="d-none">
-        <h2>Latest Activity</h2>
-      </header>
-      <CodersRankActivity class="my-4"/>
-    </section>
-
     <section id="experience">
-      <header class="py-4 text-center">
-        <h2>Latest Experience</h2>
-      </header>
-      <div class="container">
+      <div class="container-fluid">
+        <header class="py-4 text-center">
+          <h2>Latest Experience</h2>
+        </header>
         <ul class="row row-cols-md-2 g-4">
           <li v-for="(work,index) in cv.work.slice(0,4)" :key="`work-${index}`" class="col">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body py-4 text-center d-flex flex-column justify-content-center">
-                <h3 class="card-title">{{ work.position }} <br>
-                  @ <a :href="work.url" target="_blank">{{ work.name }}</a></h3>
-                <p class="card-subtitle">
-                  {{ work.location }} <br>
-                  ({{ work.startDate }} - {{ work.endDate }})
-                </p>
-              </div>
-            </div>
+            <WorkCard :work="work"/>
           </li>
         </ul>
       </div>
     </section>
 
-    <section id="blog">
-      <header>
-        <h2>blog</h2>
-      </header>
-    </section>
-
   </article>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 ul.flex-row,
 ul.row {
@@ -148,19 +154,43 @@ ul.row {
   padding: 0;
 }
 
-article > header {
-  background-image: url("https://glpzzz.dev/glpzzz.jpg");
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: -100px;
-  background-size: 50%;
-  margin-bottom: 3rem;
+article > header,
+article > section {
+  min-height: 80vh;
 }
 
-article > header > .container {
-  padding-right: 25%;
-  padding-top: 10rem !important;
-  padding-bottom: 5rem !important;
+article > section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+article > header {
+  background: var(--bs-body-color);
+  color: var(--bs-body-bg);
+}
+
+article > section:nth-child(even) {
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+article > section:nth-child(odd) {
+  background: var(--bs-secondary-bg);
+  color: var(--bs-secondary-color);
+}
+
+@media (min-width: 1200px) {
+  article > header {
+    height: 100vh;
+  }
+
+  article {
+    & > header,
+    & > section {
+      padding: 5rem 10rem;
+    }
+  }
 }
 
 </style>
