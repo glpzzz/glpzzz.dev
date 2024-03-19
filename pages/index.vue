@@ -60,14 +60,14 @@ cv.value = data.value
 
     <section id="skills">
       <div class="container-fluid">
+        <header class="py-4 text-center">
+          <h2>Skills</h2>
+        </header>
         <div class="row">
-          <div class="col-md-6 d-flex align-items-center">
+          <div class="col-lg-6 d-flex align-items-center">
             <CodersRankSkillsChart/>
           </div>
-          <div class="col-md-6">
-            <header>
-              <h2>Skills</h2>
-            </header>
+          <div class="col-lg-6">
             <section v-for="skill in cv.skills" :key="skill.name">
               <header>
                 <h3>{{ skill.name }}</h3>
@@ -181,6 +181,11 @@ article > section:nth-child(odd) {
 }
 
 @media (min-width: 1200px) {
+
+  article {
+    padding-top: 0;
+  }
+
   article > header {
     height: 100vh;
   }

@@ -14,7 +14,7 @@ const title = props.volunteer.url.split('/').pop()
 <template>
   <div class="card h-100 border-0 shadow-sm">
     <div class="card-body">
-      <h3 class="card-title">
+      <h3 class="card-title h5">
         <a :href="volunteer.url" target="_blank">{{ title }}</a>
       </h3>
       <p class="card-text">

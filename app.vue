@@ -34,7 +34,7 @@ const theme = ref("light")
 
 <template>
 
-  <nav id="main-nav" class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark">
+  <nav id="main-nav" class="navbar navbar-expand-xl fixed-top bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
       <NuxtLink to="/" class="navbar-brand">glpzzz</NuxtLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

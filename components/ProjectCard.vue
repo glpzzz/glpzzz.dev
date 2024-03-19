@@ -16,7 +16,7 @@ const props = defineProps({
          class="card-img-top object-fit-cover"
          style="aspect-ratio: 4/3" />
     <div class="card-body">
-      <h4 class="card-title">
+      <h4 class="card-title h5">
         {{ project.name }}
         <small v-if="project.url">| <a :href="project.url" target="_blank"
                                        class="text-muted">Demo</a></small>
