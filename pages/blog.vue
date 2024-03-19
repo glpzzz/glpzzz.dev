@@ -13,28 +13,31 @@ const query = {
 </script>
 
 <template>
+  <div class="container-fluid">
+    <header>
+      <h1>Blog</h1>
+      <p>Here, I blog mostly about tech…</p>
+    </header>
 
-  <h1>Blog</h1>
-
-  <ContentList
-      path="/blog"
-      :query="query"
-      v-slot="{ list }">
-    <ul>
-      <li v-for="article in list" :key="article._path">
-        <article>
-          <h2>
-            <NuxtLink :to="article._path">
-              {{ article.title }}
-            </NuxtLink>
-          </h2>
-          <p>{{ article.description }}</p>
-        </article>
-      </li>
-    </ul>
-  </ContentList>
+    <ContentList
+        path="/blog"
+        :query="query"
+        v-slot="{ list }">
+      <ul>
+        <li v-for="post in list" :key="post._path">
+          <PostCard :post="post"/>
+        </li>
+      </ul>
+    </ContentList>
+  </div>
 </template>
 
 <style scoped>
+ul {
+  list-style: none;
+  padding: 0;
+}
 
+@media (min-width: 1200px) {
+}
 </style>

@@ -78,4 +78,4 @@ $ nmcli connection delete Cubacel
 - Consider also the usage of `modem-manager-gui` to work with the modem, but my notes on that are for another post.
 
 ___
-Using image from https://commons.wikimedia.org/wiki/File:Lenovo_thinkpad_p50_%2829237281256%29.jpg licensed with CC BY-SA 2.0.
+Using image from [here](https://commons.wikimedia.org/wiki/File:Lenovo_thinkpad_p50_%2829237281256%29.jpg) licensed with CC BY-SA 2.0.

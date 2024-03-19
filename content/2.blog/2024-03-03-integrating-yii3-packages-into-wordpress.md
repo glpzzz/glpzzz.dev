@@ -53,13 +53,13 @@ To harness Yii3's functionalities, we'll incorporate the following packages:
 To begin, let's initialize a Composer project in the root of our theme by executing `composer init`. This process will
 generate a composer.json file. Subsequently, we'll proceed to include the Yii3 packages in our project.
 
-```
+```bash
 composer require yiisoft/form-model:dev-master yiisoft/validator yiisoft/form:dev-master
 ```
 
 and instruct the theme to load the composer autoload by adding the following line to the `functions.php` file:
 
-```
+```php
 require __DIR__ . '/vendor/autoload.php';
 ```
 

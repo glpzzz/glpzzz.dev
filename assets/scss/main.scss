@@ -6,8 +6,9 @@
 
 // 2. Include any default variable overrides here
 
-$font-family-monospace: 'Ubuntu Mono', monospace;
-$font-family-base: 'Ubuntu', sans-serif;
+$font-size-base: 1.25rem;
+$font-family-monospace: 'Noto Mono', monospace;
+$font-family-base: 'Noto Sans', sans-serif;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../../node_modules/bootstrap/scss/variables";
@@ -61,12 +62,39 @@ $font-family-base: 'Ubuntu', sans-serif;
 
 h1, h2, h3, h4, h5, h6,
 .display-1, .display-2, .display-3, .display-4 {
-  font-family: var(--bs-font-monospace);
   font-weight: bold;
+}
+
+main {
+  & > div,
+  & > article {
+    padding-top: 75px;
+  }
 }
 
 h2 {
   margin: 1rem 0 2rem;
+}
+
+time {
+  font-family: 'Noto Serif', serif;
+}
+
+article > div {
+
+  h2 > a,
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  & > pre {
+    padding: 1rem;
+    overflow-y: auto;
+  }
 }
 
 .navbar-brand {
@@ -123,6 +151,12 @@ h2 {
 
     & > nav > ul {
 
+    }
+  }
+
+  main {
+    & > .container-fluid {
+      padding: 5rem 10rem;
     }
   }
 
